@@ -1,0 +1,22 @@
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Command</th>
+      <th>Image</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%_.each(model.models, function (container) {%>
+      <tr>
+        <td><%= container.get("Id") %></td>
+        <td><%= container.get("Names") %></td>
+        <td><%= container.get("Command") %></td>
+        <td><%= container.get("Image") %></td>
+        <td><%= container.get("Status") %></td>
+      </tr>
+    <%});%>
+  </tbody>
+</table>

@@ -1,4 +1,4 @@
-define(['backbone'], function(Backbone) {
+define(['backbone', 'app/containers/collections/containers', 'app/containers/views/index'], function(Backbone, ContainerCollection, CollectionView) {
   return Backbone.Router.extend({
     routes: {
       "containers": "list",
@@ -6,7 +6,10 @@ define(['backbone'], function(Backbone) {
       "containers/delete": "delete"
     },
     list: function () {
-      $("#panel").html("list containers");
+      var containers = new ContainerCollection();
+      var view = new CollectionView({model: containers});
+      containers.fetch({reset: true});
+      $("#panel").html(view.render().el);
     },
     show: function () {
       $("#panel").html("show container");
