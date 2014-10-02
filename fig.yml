@@ -1,0 +1,7 @@
+app:
+  image: kunday/shipyard:latest
+  command: bundle exec rackup
+  ports:
+    - 4040:9292
+  volumes:
+    - .:/usr/src/app
