@@ -5,7 +5,8 @@ args=""
 function run_bundle_inside_container {
   docker run -v `pwd`:/usr/src/app $args \
     --rm \
-    kunday/shipyard:latest \
+    -p 4040:9292 \
+    kunday/gondola:latest \
     $@
 }
 

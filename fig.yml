@@ -1,5 +1,5 @@
 app:
-  image: kunday/shipyard:latest
+  image: kunday/gondola:latest
   command: bundle exec rackup
   ports:
     - 4040:9292

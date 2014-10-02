@@ -1,5 +1,5 @@
 image_namespace=kunday
-name=shipyard
+name=gondola
 
 install:
 	docker build -t ${image_namespace}/${name} .
