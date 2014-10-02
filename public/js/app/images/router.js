@@ -2,8 +2,8 @@ define(['backbone', 'app/images/collections/images', 'app/images/views/index'], 
   return Backbone.Router.extend({
     routes: {
       "images": "list",
-      "images/show": "show",
-      "images/delete": "delete"
+      "images/history/:id": "show",
+      "images/delete/:id": "delete"
     },
     list: function () {
       var collection = new ImagesCollection();
@@ -11,10 +11,10 @@ define(['backbone', 'app/images/collections/images', 'app/images/views/index'], 
       collection.fetch({reset: true});
       $("#panel").html(view.render().el);
     },
-    show: function () {
+    history: function (imageId) {
       $("#panel").html("show images");
     },
-    delete: function () {
+    delete: function (imageId) {
       $("#panel").html("delete image");
     }
   });

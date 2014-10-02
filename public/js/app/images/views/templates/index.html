@@ -6,15 +6,17 @@
       <th>Size</th>
       <th>RepoTags</th>
       <th>Virtual Size</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <%_.each(model.models, function (image) {%>
       <tr>
-        <td><%= image.get("Id") %></td>
+        <td><a class="image-history" data-image-id=<%=image.get("Id")%>><%= image.get("Id") %></a></td>
         <td><%= image.get("Size") %></td>
         <td><%= image.get("RepoTags") %></td>
         <td><%= image.get("VirtualSize") %></td>
+        <td><a class="glyphicon glyphicon-minus" href="#images/delete "></a></td>
       </tr>
     <%});%>
   </tbody>
