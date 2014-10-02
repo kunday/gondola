@@ -1,11 +1,11 @@
-define(['backbone', 'app/images/collections/history'], function(Backbone, HistoryCollection) {
+define(['backbone'], function(Backbone) {
   return Backbone.Model.extend({
-    urlRoot: '/api/request/images/',
-    endpoint: function(id, path) {
-      return this.urlRoot + "/" + id + "/" + path;
+    initialize: function(options) {
+      this.imageId = options['imageId'];
     },
-    history: function () {
-      return new HistoryCollection({url: this.endpoint(this.get("Id"), "history")});
+    urlRoot: '/api/request/images/',
+    url: function() {
+      return this.urlRoot + this.imageId + "/json";
     }
   });
 });
