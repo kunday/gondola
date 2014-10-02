@@ -12,7 +12,11 @@
   <tbody>
     <%_.each(model.models, function (image) {%>
       <tr>
-        <td><a class="image-history" href="#images/history/<%=image.get("Id")%>"><%= image.get("Id") %></a></td>
+        <td>
+          <a class="image-history" href="#images/history/<%=image.get("Id")%>">
+            <%= image.get("Id").substr(1,13) %>
+          </a>
+        </td>
         <td><%= image.get("Size") %></td>
         <td><%= image.get("RepoTags") %></td>
         <td><%= image.get("VirtualSize") %></td>

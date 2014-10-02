@@ -12,7 +12,7 @@
   <tbody>
     <%_.each(model.models, function (container) {%>
       <tr>
-        <td><%= container.get("Id") %></td>
+        <td><%= container.get("Id").substr(1,13) %></td>
         <td><%= container.get("Names") %></td>
         <td><%= container.get("Command") %></td>
         <td><%= container.get("Image") %></td>
