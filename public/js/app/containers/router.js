@@ -1,8 +1,13 @@
-define(['backbone', 'app/containers/collections/containers', 'app/containers/views/index'], function(Backbone, ContainerCollection, CollectionView) {
+define(['backbone',
+  'app/containers/collections/containers',
+  'app/containers/views/index',
+  'app/containers/models/container',
+  'app/containers/views/show'],
+  function(Backbone, ContainerCollection, CollectionView, Container, ShowContainerView) {
   return Backbone.Router.extend({
     routes: {
       "containers": "list",
-      "containers/show": "show",
+      "containers/show/:id": "show",
       "containers/delete": "delete"
     },
     list: function () {
@@ -11,8 +16,11 @@ define(['backbone', 'app/containers/collections/containers', 'app/containers/vie
       containers.fetch({reset: true});
       $("#panel").html(view.render().el);
     },
-    show: function () {
-      $("#panel").html("show container");
+    show: function (id) {
+      var container = new Container({"id": id});
+      var view = new ShowContainerView({model: container});
+      container.fetch({reset: true});
+      $("#panel").html(view.render().el);
     },
     delete: function () {
       $("#panel").html("delete containers");
