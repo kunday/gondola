@@ -1,4 +1,4 @@
-define(['backbone', 'text!app/images/views/templates/index.html'], function(Backbone, template) {
+define(['backbone', 'text!app/images/views/templates/history.html'], function(Backbone, template) {
   return Backbone.View.extend({
     template: _.template(template),
     initialize: function(options) {

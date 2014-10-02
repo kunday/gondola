@@ -12,11 +12,11 @@
   <tbody>
     <%_.each(model.models, function (image) {%>
       <tr>
-        <td><a class="image-history" data-image-id=<%=image.get("Id")%>><%= image.get("Id") %></a></td>
+        <td><a class="image-history" href="#images/history/<%=image.get("Id")%>"><%= image.get("Id") %></a></td>
         <td><%= image.get("Size") %></td>
         <td><%= image.get("RepoTags") %></td>
         <td><%= image.get("VirtualSize") %></td>
-        <td><a class="glyphicon glyphicon-minus" href="#images/delete "></a></td>
+        <td><a class="glyphicon glyphicon-minus" href="#images/delete"></a></td>
       </tr>
     <%});%>
   </tbody>
