@@ -30,7 +30,5 @@ requirejs.config({
     bootstrap: 'vendor/bootstrap.min'
   }
 });
-require(['application', 'bootstrap'], function(Application) {
-  var app = new Application();
-  Backbone.history.start();
+require(['application'], function(Application) {
 });

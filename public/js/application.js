@@ -1,11 +1,4 @@
-define(['backbone', 'backbone_routemanager', 'app/containers/router'], function (Backbone, RouteManager, ContainersRouter) {
-  return RouteManager.extend({
-    routes: {
-      '': 'index',
-      'containers/': ContainersRouter
-    },
-    index: function() {
-      $('#panel').html('Welcome Home!');
-    }
-  });
+define(['backbone', 'app/containers/router'], function (Backbone, ContainersRouter) {
+  var containersRouter = new ContainersRouter();
+  Backbone.history.start();
 });

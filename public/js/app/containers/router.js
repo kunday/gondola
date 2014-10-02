@@ -1,9 +1,9 @@
 define(['backbone'], function(Backbone) {
   return Backbone.Router.extend({
     routes: {
-      "list": "list",
-      "show": "show",
-      "delete": "delete"
+      "containers": "list",
+      "containers/show": "show",
+      "containers/delete": "delete"
     },
     list: function () {
       $("#panel").html("list containers");
