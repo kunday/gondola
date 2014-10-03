@@ -7,6 +7,7 @@
       <th>Command</th>
       <th>Image</th>
       <th>Status</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +22,10 @@
         <td><%= container.get("Command") %></td>
         <td><%= container.get("Image") %></td>
         <td><%= container.get("Status") %></td>
+        <td>
+          <a class="glyphicon glyphicon-pause" href="#"></a>
+          <a class="glyphicon glyphicon-stop" href="#"></a>
+        </td>
       </tr>
     <%});%>
   </tbody>
