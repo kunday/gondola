@@ -1,8 +1,9 @@
 define(['backbone',
   'app/system/views/version',
+  'app/system/views/info',
   'app/system/models/info',
   'app/system/models/version'],
-  function(Backbone, VersionView, InfoModel, VersionModel) {
+  function(Backbone, VersionView, InfoView, InfoModel, VersionModel) {
   return Backbone.Router.extend({
     routes: {
       "system": "version",
@@ -17,7 +18,7 @@ define(['backbone',
     },
     info: function() {
       var model = new InfoModel();
-      var view = new VersionView({model: model});
+      var view = new InfoView({model: model});
       model.fetch({reset: true});
       $("#panel").html(view.render().el);
     }
