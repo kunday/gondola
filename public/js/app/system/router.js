@@ -1,10 +1,12 @@
-define(['backbone', 'app/system/views/index'], function(Backbone, IndexView) {
+define(['backbone', 'app/system/views/index', 'app/system/models/info'], function(Backbone, IndexView, InfoModel) {
   return Backbone.Router.extend({
     routes: {
       "system": "index"
     },
     index: function() {
-      var view = new IndexView();
+      var model = new InfoModel()
+      var view = new IndexView({model: model});
+      model.fetch({reset: true});
       $("#panel").html(view.render().el);
     }
   })
