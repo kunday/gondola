@@ -8,4 +8,5 @@ RUN bundle install --system
 
 ADD . /usr/src/app
 
-CMD []
+EXPOSE 9292
+CMD bundle exec rackup
