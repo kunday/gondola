@@ -19,7 +19,7 @@ define(['backbone',
     },
     history: function (id) {
       var historyCollection = new HistoryCollection({"imageId": id});
-      var image = new Image({"imageId": id})
+      var image = new Image({"imageId": id});
       var view = new HistoryView({model: historyCollection, info: image});
       historyCollection.fetch({reset: true});
       image.fetch();

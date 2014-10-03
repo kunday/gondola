@@ -14,5 +14,5 @@ define(['backbone',
       version.fetch({reset: true});
       $("#panel").html(view.render().el);
     }
-  })
+  });
 });

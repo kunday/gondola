@@ -4,7 +4,7 @@ define(['backbone', "text!app/system/views/templates/index.html"], function(Back
     initialize: function(options) {
       this.model.bind('change', this.render, this);
       this.model.bind('reset', this.render, this);
-      this.version = options['version'];
+      this.version = options.version;
       this.version.bind('change', this.render, this);
       this.version.bind('reset', this.render, this);
     },
