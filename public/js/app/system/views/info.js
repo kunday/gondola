@@ -8,7 +8,6 @@ define(['backbone',
           this.model.bind('reset', this.render, this);
         },
         render: function() {
-          console.log(this.model);
           $(this.el).html(this.template({model: this.model}));
           return this;
         }
