@@ -15,9 +15,17 @@ You should now be able to view the application in your browser in the url
 
     http://docker_host:4040/app/#
 
-## Running using fig.
+## Setting up for development
 
-Checkout this project in your workspace and run
+Checkout the project from github using:
+
+	git checkout https://github.com/kunday/gondola.git
+
+Compile a version of the application locally by running
+
+	make
+
+Once that's done, start a local version using:
 
     fig up
 
@@ -26,3 +34,12 @@ Checkout this project in your workspace and run
 The application is javascript based running against the tcp docker api. Support
 for socket is planned for the next release. The files are rendered via a ruby
 sinatra application for development.
+
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
