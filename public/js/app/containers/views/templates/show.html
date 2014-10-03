@@ -1,1 +1,41 @@
 <h2>Showing Container</h2>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <table class="table table-striped table-bordered">
+      <tbody>
+        <tr>
+          <td>Name</td>
+          <td><%= model.get("Name") %></td>
+        </tr>
+        <tr>
+          <td>From Image</td>
+          <td><a href="#images/history/<%= model.get("Image") %>"><%= model.get("Image") %></a></td>
+        </tr>
+        <tr>
+          <td>Args</td>
+          <td><%= model.get("Args") %></td>
+        </tr>
+        <tr>
+          <td>Created</td>
+          <td><%= model.get("Created") %></td>
+        </tr>
+        <tr>
+          <td>Driver</td>
+          <td><%= model.get("Driver") %></td>
+        </tr>
+        <tr>
+          <td>Exec Driver</td>
+          <td><%= model.get("ExecDriver") %></td>
+        </tr>
+        <tr>
+          <td>Host Name Path</td>
+          <td><%= model.get("HostnamePath") %></td>
+        </tr>
+        <tr>
+          <td>Hosts Path</td>
+          <td><%= model.get("HostnamePath") %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
