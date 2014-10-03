@@ -13,7 +13,11 @@
   <tbody>
     <%_.each(model.models, function (layer) {%>
       <tr>
-        <td><%= layer.get("Id") %></td>
+        <td>
+          <a href="#images/history/<%= layer.get("Id") %>">
+            <%= layer.get("Id") %>
+          </a>
+        </td>
         <td><%= layer.get("Created")%></td>
         <td><%= layer.get("CreatedBy")%></td>
         <td><%= layer.get("Size")%></td>
