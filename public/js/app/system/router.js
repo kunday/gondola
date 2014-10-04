@@ -7,14 +7,15 @@ define(['backbone',
     function(Backbone, Module, VersionView, InfoView, InfoModel, VersionModel) {
       return Backbone.Router.extend({
         moduleInitialize: function(subNav){
-          var index = new Module({
+          var appModule = new Module({
             title: "System Information",
             name: "system",
             navigationTabs: ["version", "info"],
             router: this,
             default: subNav
           });
-          $("#panel").html(index.render().el);
+          $("#panel").html(appModule.render().el);
+          return appModule;
         },
         routes: {
           "system": "version",
@@ -22,18 +23,18 @@ define(['backbone',
           "system/info": "info"
         },
         version: function() {
-          this.moduleInitialize('version');
+          var module = this.moduleInitialize('version');
           var version = new VersionModel();
           var view = new VersionView({model: version});
           version.fetch({reset: true});
-          $("#module-nav-content").html(view.render().el);
+          module.content(view.render().el);
         },
         info: function() {
-          this.moduleInitialize('info');
+          var module = this.moduleInitialize('info');
           var model = new InfoModel();
           var view = new InfoView({model: model});
           model.fetch({reset: true});
-          $("#module-nav-content").html(view.render().el);
+          module.content(view.render().el);
         }
       });
     });

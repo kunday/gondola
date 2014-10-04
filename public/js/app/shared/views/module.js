@@ -17,25 +17,24 @@ define(['backbone',
         title:    options.title,
         name:     options.name,
         tabs:     options.navigationTabs,
-        default:  options.default
       };
-      this.router = options.router;
+      this.default = options.default;
+      this.router  = options.router;
     },
     render: function() {
       $(this.el).html(this.template({model: this.model}));
+      this.setActiveHighlight();
       return this;
     },
-    resetActiveHighlights: function() {
-      $(this.el).find('.module-nav-tabs').removeClass('active');
-    },
-    setActiveHighlight: function(navItem) {
-      $(navItem).addClass('active');
+    setActiveHighlight: function() {
+      $(this.el).find("#module-nav-" + this.default).addClass('active');
     },
     navigate: function(e) {
-      this.resetActiveHighlights();
-      this.setActiveHighlight(e.currentTarget);
       var navigateTarget = $(e.currentTarget).find('a').text();
       this.router.navigate('system/' + navigateTarget,  {trigger: true});
+    },
+    content: function(content) {
+      $("#module-nav-content").html(content);
     }
   });
 });
