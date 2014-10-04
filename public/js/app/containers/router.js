@@ -16,7 +16,7 @@ define(['backbone',
       containers.fetch({reset: true});
       setInterval(function () {
         containers.fetch({reset: true});
-      }, 5000);
+      }, 60000);
       $("#panel").html(view.render().el);
     },
     show: function (id) {
