@@ -6,7 +6,6 @@ define(['backbone', 'text!app/containers/views/templates/show.html'], function(B
       this.model.bind('change', this.render, this);
     },
     render: function() {
-      console.log(this.model);
       $(this.el).html(this.template({model: this.model}));
       return this;
     }

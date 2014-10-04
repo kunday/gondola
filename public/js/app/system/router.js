@@ -16,7 +16,6 @@ define(['backbone',
           $('.system-nav-tabs').removeClass('active');
         },
         setActiveLink: function(element) {
-          console.log("#system-nav-"+element);
           $("#system-nav-"+element).addClass('active');
         },
         routes: {
