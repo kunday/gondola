@@ -14,6 +14,9 @@ define(['backbone',
       var containers = new ContainerCollection();
       var view = new CollectionView({model: containers});
       containers.fetch({reset: true});
+      setInterval(function () {
+        containers.fetch({reset: true});
+      }, 5000);
       $("#panel").html(view.render().el);
     },
     show: function (id) {
