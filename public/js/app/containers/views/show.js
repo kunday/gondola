@@ -8,6 +8,7 @@ define(['backbone', 'text!app/containers/templates/show.html'], function(Backbon
       this.model.tabs = ['info', 'state', 'networking', 'logs'];
       this.model.bind('reset', this.render, this);
       this.model.bind('change', this.render, this);
+      this.model.actions = ["start","stop","restart","kill","pause","unpause","remove"];
     },
     render: function() {
       $(this.el).html(this.template({model: this.model}));
