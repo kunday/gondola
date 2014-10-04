@@ -1,0 +1,10 @@
+<h3><%= model.title %></h3>
+<ul class="nav nav-tabs" role="tablist">
+  <% _.each(model.tabs, function(tab) { %>
+    <li class="module-nav-tabs" id="module-nav-<%= tab %>">
+      <a href="javascript:void(0)"><%= tab %></a>
+    </li>
+  <% }); %>
+</ul>
+<div id="module-nav-content">
+</div>
