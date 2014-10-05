@@ -29,13 +29,6 @@ Once that's done, start a local version using:
 
     fig up
 
-## Architecture
-
-The application is javascript based running against the tcp docker api. Support
-for socket is planned for the next release. The files are rendered via a ruby
-sinatra application for development.
-
-
 ## Contributing
 
 1. Fork it
