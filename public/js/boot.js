@@ -1,5 +1,5 @@
 requirejs.config({
-  baseUrl: 'js',
+  baseUrl: 'app/js',
   shim: {
     'underscore': {
       exports: '_'
@@ -8,24 +8,14 @@ requirejs.config({
       deps: ['underscore','jquery'],
       exports: 'Backbone'
     },
-    'backbone_routemanager': {
-      deps: ['backbone'],
-      exports: 'Backbone.RouteManager'
-    },
-    'backbone_modal': {
-      deps: ['backbone'],
-      exports: 'Backbone.Modal'
-    },
     'bootstrap': {
       deps: ['jquery']
     }
   },
   paths: {
-    jquery: 'vendor/jquery',
-    underscore: 'vendor/underscore',
-    backbone: 'vendor/backbone',
-    backbone_routemanager: 'vendor/backbone.routemanager',
-    backbone_modal: 'vendor/backbone.modal-min',
+    jquery: 'vendor/jquery-2.1.1.min',
+    underscore: 'vendor/underscore-min',
+    backbone: 'vendor/backbone-min',
     text: 'vendor/text',
     bootstrap: 'vendor/bootstrap.min'
   }
