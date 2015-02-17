@@ -18,7 +18,7 @@
             <%= layer.get("Id") %>
           </a>
         </td>
-        <td><%= layer.get("Created")%></td>
+        <td><%= new Date(1000*layer.get("Created")).toLocaleString()%></td>
         <td><%= layer.get("CreatedBy")%></td>
         <td><%= layer.get("Size")%></td>
       </tr>
