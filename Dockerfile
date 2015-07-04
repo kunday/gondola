@@ -1,5 +1,7 @@
 FROM ruby:2.1.5
 
+RUN gem update --system
+RUN bundle config jobs 8
 WORKDIR /usr/src/app
 
 ADD Gemfile /usr/src/app/Gemfile
@@ -9,4 +11,5 @@ RUN bundle install --system
 ADD . /usr/src/app
 
 EXPOSE 9292
-CMD bundle exec rackup
+
+CMD bundle exec puma

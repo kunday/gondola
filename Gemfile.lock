@@ -7,6 +7,8 @@ GEM
     kgio (2.9.2)
     multi_json (1.10.1)
     multipart-post (2.0.0)
+    puma (2.11.3)
+      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
@@ -36,6 +38,7 @@ PLATFORMS
 
 DEPENDENCIES
   faraday
+  puma
   rack
   rake
   sinatra

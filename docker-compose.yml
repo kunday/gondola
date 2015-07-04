@@ -1,6 +1,6 @@
 app:
   image: kunday/gondola:latest
-  command: bundle exec rackup
+  command: bundle exec puma
   ports:
     - 9292:9292
   volumes:
