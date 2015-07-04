@@ -1,6 +1,8 @@
 app:
   image: kunday/gondola:latest
   command: bundle exec puma
+  volumes:
+    - .:/usr/local/app
   ports:
     - 9292:9292
   volumes:

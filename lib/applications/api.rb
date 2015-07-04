@@ -1,11 +1,11 @@
 require 'faraday'
 
 class Api < Sinatra::Application
-  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
   get '/request/*' do
     content_type :json
     conn.get("#{params[:splat].first}#{options(params)}").body
   end
+
   private
   def options(params)
     return "" unless params["all"]
