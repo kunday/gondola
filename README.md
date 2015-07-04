@@ -27,7 +27,7 @@ Compile a version of the application locally by running
 
 Once that's done, start a local version using:
 
-    fig up
+    docker-compose up
 
 ## Contributing
 
