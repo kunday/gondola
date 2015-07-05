@@ -1,22 +1,25 @@
 require 'uri'
+require 'excon'
 
 module Docker
   class Connection
-    attr_accessor :url
+    attr_reader :url, :options
 
     def initialize(url)
+      @uri = URI.parse(url)
       @url = url
+      set_connection_opts
     end
 
-    def type
-      uri = URI.parse(url)
-      case uri.scheme
-      when 'unix'
-        return :unix
-      when 'http'
-        return :http
-      when 'https'
-        return :https
+    private
+    def set_connection_opts
+      opts = {method: :get} # default to get for now
+      if @uri.scheme == "unix"
+        @url, @options = 'unix:///', {:socket => @uri.path}.merge(opts)
+      elsif @uri.scheme =~ /^(https?|tcp)$/
+        @url, @options = url, opts
+      else
+        @url, @options = "http://#{@uri}", opts
       end
     end
   end
