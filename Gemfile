@@ -10,3 +10,7 @@ gem 'puma'
 gem 'rspec'
 gem 'excon'
 gem 'docker-api'
+
+group :test do
+  gem 'rubocop'
+end
