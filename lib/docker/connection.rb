@@ -28,18 +28,18 @@ module Docker
       query ||= {}
       opts ||= {}
       headers = opts.delete(:headers) || {}
-      content_type = opts[:body].nil? ?  'text/plain' : 'application/json'
-      user_agent = "gondola"
+      content_type = opts[:body].nil? ? 'text/plain' : 'application/json'
+      user_agent = 'gondola'
       {
-        :method        => http_method,
-        :path          => "/#{path}",
-        :query         => query,
-        :headers       => { 'Content-Type' => content_type,
-                            'User-Agent'   => user_agent,
+        method: http_method,
+        path: "/#{path}",
+        query: query,
+        headers: { 'Content-Type' => content_type,
+                   'User-Agent'   => user_agent
       }.merge(headers),
-        :expects       => (200..204).to_a << 304,
-        :idempotent    => http_method == :get,
-        :request_block => block
+        expects: (200..204).to_a << 304,
+        idempotent: http_method == :get,
+        request_block: block
       }.merge(opts).reject { |_, v| v.nil? }
     end
 

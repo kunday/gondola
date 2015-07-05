@@ -4,6 +4,6 @@ class Environment
   end
 
   def self.docker_version
-    ENV.fetch('DOCKER_VERSION', '1') #not supported yet.
+    ENV.fetch('DOCKER_VERSION', '1') # not supported yet.
   end
 end
