@@ -5,5 +5,9 @@ app:
     - .:/usr/local/app
   ports:
     - 9292:9292
+  privileged: true
   volumes:
     - .:/usr/src/app
+    - /var/run/docker.sock:/var/docker.sock
+  environment:
+    DOCKER_URL: 'unix:///var/docker.sock'
