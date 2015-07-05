@@ -7,12 +7,18 @@ module Docker
 
     def initialize(url)
       @uri = URI.parse(url)
+      @url = url
+      set_connection_opts
+    end
+
+    private
+
+    def set_connection_opts
       opts = { method: :get } # default to get for now
       if @uri.scheme == 'unix'
         @url = 'unix:///'
         @options = { socket: @uri.path }.merge(opts)
       elsif @uri.scheme =~ /^(https?|tcp)$/
-        @url = url
         @options = opts
       else
         @url = "http://#{@uri}"
