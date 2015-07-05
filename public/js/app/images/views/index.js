@@ -1,4 +1,6 @@
-define(['backbone', 'text!app/images/views/templates/index.html','app/shared/helpers/disk'], function(Backbone, template, DiskHelper) {
+define(['backbone',
+'text!app/images/views/templates/index.html',
+'app/shared/helpers/disk'], function(Backbone, template, DiskHelper) {
   return Backbone.View.extend({
     template: _.template(template),
     initialize: function(options) {
