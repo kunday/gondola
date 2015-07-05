@@ -19,7 +19,7 @@
         </td>
         <td><%= image.get("Size") %></td>
         <td><%= image.get("RepoTags") %></td>
-        <td><%= image.get("VirtualSize") %></td>
+        <td><%= helper.formatSizeUnits(image.get("VirtualSize")) %></td>
         <td><a class="glyphicon glyphicon-minus" href="#images/delete"></a></td>
       </tr>
     <%});%>
