@@ -5,5 +5,10 @@ gem 'rake'
 gem 'unicorn'
 gem 'rack'
 gem 'sinatra-contrib'
-gem 'faraday'
 gem 'puma'
+gem 'excon'
+
+group :test do
+  gem 'rubocop'
+  gem 'rspec'
+end

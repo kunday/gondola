@@ -27,7 +27,7 @@ Compile a version of the application locally by running
 
 Once that's done, start a local version using:
 
-    fig up
+    docker-compose up
 
 ## Contributing
 
@@ -36,3 +36,7 @@ Once that's done, start a local version using:
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+
+#TODO
+1. Enable meta screen showing the connection options

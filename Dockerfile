@@ -1,4 +1,4 @@
-FROM ruby:2.1.5
+FROM ruby:2.2.2
 
 RUN gem update --system
 RUN bundle config jobs 8

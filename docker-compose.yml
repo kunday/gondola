@@ -1,7 +1,14 @@
 app:
   image: kunday/gondola:latest
   command: bundle exec puma
+  volumes:
+    - .:/usr/local/app
   ports:
     - 9292:9292
+  privileged: true
   volumes:
     - .:/usr/src/app
+    - /var/run/docker.sock:/var/run/docker.sock
+  environment:
+    DOCKER_URL: 'unix:///var/run/docker.sock'
+    DOCKER_VERSION: '1'
