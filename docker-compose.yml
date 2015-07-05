@@ -8,6 +8,7 @@ app:
   privileged: true
   volumes:
     - .:/usr/src/app
-    - /var/run/docker.sock:/var/docker.sock
+    - /var/run/docker.sock:/var/run/docker.sock
   environment:
-    DOCKER_URL: 'unix:///var/docker.sock'
+    DOCKER_URL: 'unix:///var/run/docker.sock'
+    DOCKER_VERSION: '1'
