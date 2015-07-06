@@ -9,8 +9,6 @@ GEM
     parser (2.2.2.6)
       ast (>= 1.1, < 3.0)
     powerpack (0.1.1)
-    puma (2.11.3)
-      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
@@ -47,12 +45,8 @@ PLATFORMS
 
 DEPENDENCIES
   excon
-  puma
   rack
   rake
   rspec
   rubocop
   sinatra
-
-BUNDLED WITH
-   1.10.5
