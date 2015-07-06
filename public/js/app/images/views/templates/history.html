@@ -15,12 +15,12 @@
       <tr>
         <td>
           <a href="#images/history/<%= layer.get("Id") %>">
-            <%= layer.get("Id") %>
+            <%= String(layer.get("Id")).substr(0,13) %>
           </a>
         </td>
         <td><%= new Date(1000*layer.get("Created")).toLocaleString()%></td>
         <td><%= layer.get("CreatedBy")%></td>
-        <td><%= layer.get("Size")%></td>
+        <td><%= helper.formatSizeUnits(layer.get("Size"))%></td>
       </tr>
     <%});%>
   </tbody>

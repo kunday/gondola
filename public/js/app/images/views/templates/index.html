@@ -3,7 +3,6 @@
   <thead>
     <tr>
       <th>Id</th>
-      <th>Size</th>
       <th>RepoTags</th>
       <th>Virtual Size</th>
       <th>Actions</th>
@@ -14,12 +13,11 @@
       <tr>
         <td>
           <a class="image-history" href="#images/history/<%=image.get("Id")%>">
-            <%= image.get("Id").substr(1,13) %>
+            <%= image.get("Id").substr(0,13) %>
           </a>
         </td>
-        <td><%= image.get("Size") %></td>
         <td><%= image.get("RepoTags") %></td>
-        <td><%= image.get("VirtualSize") %></td>
+        <td><%= helper.formatSizeUnits(image.get("VirtualSize")) %></td>
         <td><a class="glyphicon glyphicon-minus" href="#images/delete"></a></td>
       </tr>
     <%});%>

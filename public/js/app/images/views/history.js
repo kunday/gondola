@@ -1,4 +1,6 @@
-define(['backbone', 'text!app/images/views/templates/history.html'], function(Backbone, template) {
+define(['backbone',
+'text!app/images/views/templates/history.html',
+'app/shared/helpers/disk'], function(Backbone, template, DiskHelper) {
   return Backbone.View.extend({
     template: _.template(template),
     initialize: function(options) {
@@ -7,7 +9,7 @@ define(['backbone', 'text!app/images/views/templates/history.html'], function(Ba
       this.info = options.info;
     },
     render: function() {
-      $(this.el).html(this.template({model: this.model, info: this.info}));
+      $(this.el).html(this.template({model: this.model, info: this.info, helper: DiskHelper}));
       return this;
     }
   });
