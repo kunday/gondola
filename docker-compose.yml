@@ -4,7 +4,7 @@ app:
   volumes:
     - .:/usr/local/app
   ports:
-    - 9292:9292
+    - 59292:9292
   privileged: true
   volumes:
     - .:/usr/src/app
