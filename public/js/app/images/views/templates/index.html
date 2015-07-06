@@ -17,7 +17,7 @@
             <%= image.get("Id").substr(1,13) %>
           </a>
         </td>
-        <td><%= image.get("Size") %></td>
+        <td><%= helper.formatSizeUnits(image.get("Size")) %></td>
         <td><%= image.get("RepoTags") %></td>
         <td><%= helper.formatSizeUnits(image.get("VirtualSize")) %></td>
         <td><a class="glyphicon glyphicon-minus" href="#images/delete"></a></td>
