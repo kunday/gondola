@@ -25,4 +25,4 @@ ADD . /usr/src/app
 
 EXPOSE 9292
 
-CMD bundle exec puma
+CMD bundle exec rackup
