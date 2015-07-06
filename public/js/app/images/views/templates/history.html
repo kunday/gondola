@@ -15,7 +15,7 @@
       <tr>
         <td>
           <a href="#images/history/<%= layer.get("Id") %>">
-            <%= layer.get("Id") %>
+            <%= String(layer.get("Id")).substr(0,13) %>
           </a>
         </td>
         <td><%= new Date(1000*layer.get("Created")).toLocaleString()%></td>

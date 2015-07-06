@@ -5,10 +5,10 @@ define(['backbone', 'text!app/containers/templates/show.html'], function(Backbon
       'click .module-nav-tabs': 'navigate'
     },
     initialize: function() {
-      this.model.tabs = ['info', 'state', 'networking', 'logs'];
+      this.model.tabs = ['info', 'state', 'networking'];
       this.model.bind('reset', this.render, this);
       this.model.bind('change', this.render, this);
-      this.model.actions = ["start","stop","restart","kill","pause","unpause","remove"];
+      // this.model.actions = ["start","stop","restart","kill","pause","unpause","remove"];
     },
     render: function() {
       $(this.el).html(this.template({model: this.model}));
