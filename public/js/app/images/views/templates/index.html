@@ -14,7 +14,7 @@
       <tr>
         <td>
           <a class="image-history" href="#images/history/<%=image.get("Id")%>">
-            <%= image.get("Id").substr(1,13) %>
+            <%= image.get("Id").substr(0,13) %>
           </a>
         </td>
         <td><%= helper.formatSizeUnits(image.get("Size")) %></td>
