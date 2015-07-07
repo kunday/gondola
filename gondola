@@ -1,6 +1,6 @@
 #!/bin/bash
 
-image_version=2
+image_version=latest
 
 function kill_process {
   docker rm -f gondola
