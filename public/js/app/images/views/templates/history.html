@@ -19,7 +19,7 @@
           </a>
         </td>
         <td><%= new Date(1000*layer.get("Created")).toLocaleString()%></td>
-        <td><%= layer.get("CreatedBy")%></td>
+        <td><code><%= layer.get("CreatedBy")%></code></td>
         <td><%= helper.formatSizeUnits(layer.get("Size"))%></td>
       </tr>
     <%});%>
