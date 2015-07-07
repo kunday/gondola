@@ -1,26 +1,26 @@
 <!doctype html>
 	<head>
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Gondola</title>
 		<meta name="description" content="Application">
 		<meta name="viewport" contentent="width=device-width, initial-scale=1.0">
     <link href="app/css/bootstrap.min.css" rel="stylesheet">
+		<link href="app/css/normalize.css" rel="stylesheet">
     <link href="app/css/navbar-fixed-top.css" rel="stylesheet">
     <link href="app/css/application.css" rel="stylesheet">
     <script src="app/js/vendor/require.js"></script>
     <script src="app/js/boot.js"></script>
 	</head>
 	<body>
-    <!-- Fixed navbar -->
     <header class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand">Gondola</a>
+          <a class="navbar-brand" href="#containers">Gondola</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -29,9 +29,8 @@
 						<li class="module"><a href="#system">System</a></li>
           </ul>
         </div>
-      </div>
     </header>
-    <div class="container" id="panel">
+    <div class="container-fluid col-md-12" id="panel">
     </div>
   </body>
 </html>
