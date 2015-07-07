@@ -6,7 +6,7 @@ define(['backbone', 'text!app/container/templates/show.html'], function(Backbone
     },
     initialize: function(options) {
       this.model = options.model;
-      this.model.tabs = ['info', 'state', 'networking', 'logs'];
+      this.model.tabs = ['info', 'state', 'networking'];
       this.model.bind('reset', this.render, this);
       this.model.bind('change', this.render, this);
     },
