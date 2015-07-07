@@ -1,1 +1,17 @@
-hello
+<h3> Container changes </h3>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Path</th>
+      <th>Kind</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% _.each(model.attributes, function(change) { %>
+      <tr>
+        <td><%= change["Path"] %></td>
+        <td><%= change["Kind"] %></td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
