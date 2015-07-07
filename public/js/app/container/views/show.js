@@ -1,17 +1,17 @@
-define(['backbone', 'text!app/containers/templates/show.html'], function(Backbone, template) {
+define(['backbone', 'text!app/container/templates/show.html'], function(Backbone, template) {
   return Backbone.View.extend({
     template: _.template(template),
     events: {
       'click .module-nav-tabs': 'navigate'
     },
-    initialize: function() {
-      this.model.tabs = ['info', 'state', 'networking'];
+    initialize: function(options) {
+      this.model = options.model;
+      this.model.tabs = ['info', 'state', 'networking', 'logs'];
       this.model.bind('reset', this.render, this);
       this.model.bind('change', this.render, this);
-      // this.model.actions = ["start","stop","restart","kill","pause","unpause","remove"];
     },
     render: function() {
-      $(this.el).html(this.template({model: this.model}));
+      $(this.el).html(this.template({model: this.model, log: this.log}));
       this.toggleView("info");
       return this;
     },

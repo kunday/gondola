@@ -6,9 +6,6 @@ define(['backbone'], function (Backbone) {
     rootUrl: '/api/request/images/',
     url: function() {
       return this.rootUrl + this.imageId + "/history";
-    },
-    parse: function(response) {
-      return response;
     }
   });
 });
