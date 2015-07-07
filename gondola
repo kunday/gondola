@@ -1,6 +1,18 @@
 #!/bin/bash
 
-docker run --privileged=true \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  -p 51292:9292 -d \
-  kunday/gondola:latest
+image_version=2
+
+function kill_process {
+  docker rm -f gondola
+}
+
+function start_process {
+  docker run --privileged=true \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -p 59292:9292 -d \
+    --name gondola \
+    kunday/gondola:${image_version}
+}
+
+kill_process
+start_process
