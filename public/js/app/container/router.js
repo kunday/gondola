@@ -6,8 +6,8 @@ define(['backbone',
   function(Backbone, ContainerInfo, ContainerChanges, ContainerInfoView, ContainerChangesView) {
     return Backbone.Router.extend({
       routes: {
-        "containers/show/:id": "show",
-        'containers/changes/:id': 'changes'
+        "container/show/:id": "show",
+        'container/changes/:id': 'changes'
       },
       show: function (id) {
         var container = new ContainerInfo({"id": id});

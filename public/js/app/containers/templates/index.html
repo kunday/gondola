@@ -13,7 +13,7 @@
     <%_.each(model.models, function (container) {%>
       <tr>
         <td>
-          <a href="#containers/show/<%= container.get("Id") %>">
+          <a href="#container/show/<%= container.get("Id") %>">
             <%= container.get("Id").substr(1,13) %>
           </a>
         </td>
