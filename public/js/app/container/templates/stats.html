@@ -1,1 +1,37 @@
-Stats
+<h3> Stats </h3>
+
+Last updated at: <%= model.get('read') %>
+
+<h4> Network </h4>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th> key </th>
+      <th> value </th>
+  </thead>
+  <tbody>
+    <% _.each(model.get("network"), function(key, value) { %>
+      <tr>
+        <td><%= value %></td>
+        <td><%= key %></td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
+<h4> Memory Stats </h4>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th> key </th>
+      <th> value </th>
+  </thead>
+  <tbody>
+    <% _.each(model.get("memory_stats"), function(key, value) { %>
+      <tr>
+        <td><%= value %></td>
+        <td><%= key %></td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>

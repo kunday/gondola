@@ -5,7 +5,7 @@ define(['backbone'], function () {
     },
     urlRoot: '/api/request/containers/',
     url: function() {
-      return this.urlRoot + this.containerId + "/logs?stdout=true?stderr=true";
+      return this.urlRoot + this.containerId + "/logs?stdout=true&stderr=true&follow=false&timestamps=true";
     }
   })
 });
