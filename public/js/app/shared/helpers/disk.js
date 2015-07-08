@@ -1,5 +1,5 @@
 define(['backbone'], function () {
-  return DiskHelper = {
+  DiskHelper = {
     formatSizeUnits : function(bytes) {
         if      (bytes>=1000000000) {bytes=(bytes/1000000000).toFixed(2)+' GB';}
         else if (bytes>=1000000)    {bytes=(bytes/1000000).toFixed(2)+' MB';}
@@ -10,4 +10,5 @@ define(['backbone'], function () {
         return bytes;
     }
   };
+  return DiskHelper;
 })

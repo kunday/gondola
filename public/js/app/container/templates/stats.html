@@ -30,7 +30,7 @@ Last updated at: <%= model.get('read') %>
     <% _.each(model.get("memory_stats"), function(key, value) { %>
       <tr>
         <td><%= value %></td>
-        <td><%= key %></td>
+        <td><%= DiskHelper.formatSizeUnits(key) %></td>
       </tr>
     <% }); %>
   </tbody>
