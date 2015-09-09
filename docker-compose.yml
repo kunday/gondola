@@ -1,10 +1,9 @@
 app:
   image: kunday/gondola:latest
-  command: bundle exec rackup
   volumes:
     - .:/usr/local/app
   ports:
-    - 59292:9292
+    - 59292:8080
   privileged: true
   volumes:
     - .:/usr/src/app

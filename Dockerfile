@@ -1,5 +1,18 @@
 FROM frolvlad/alpine-ruby:latest
 
+ENV ARCH x86
+
+RUN apk add --update ruby-io-console && \
+  rm /var/cache/apk/*
+
+RUN apk add --update ruby-dev && \
+  rm /var/cache/apk/*
+
+RUN apk add --update build-base && \
+  rm /var/cache/apk/*
+
+RUN apk add --update linux-headers && \
+  rm /var/cache/apk/*
 RUN echo -e 'gem: --no-rdoc --no-ri' > /etc/gemrc
 
 WORKDIR /usr/src/app
@@ -14,4 +27,4 @@ ADD . /usr/src/app
 
 EXPOSE 9292
 
-CMD bundle exec rackup
+CMD bundle exec unicorn
