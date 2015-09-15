@@ -6,7 +6,7 @@ history, how much space you are using and the steps used to construct the
 Dockerfile.
 
 ![Gif]
-(https://makeagif.com/i/ijCdBT)
+(http://cdn.makeagif.com/media/9-15-2015/ijCdBT.gif)
 
 
 ## Installation
