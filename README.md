@@ -5,6 +5,9 @@ images and system information. It allows you to drill down deep into docker imag
 history, how much space you are using and the steps used to construct the
 Dockerfile.
 
+![Gif of Software](https://makeagif.com/i/ijCdBT)
+
+
 ## Installation
 
   You can run this in your docker host by using the command:
