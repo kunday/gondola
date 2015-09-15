@@ -1,18 +1,13 @@
-FROM frolvlad/alpine-ruby:latest
+FROM alpine:3.2
 
-ENV ARCH x86
+RUN apk add --update linux-headers build-base && \
+    rm /var/cache/apk/*
 
-RUN apk add --update ruby-io-console && \
+RUN apk add --update ruby=2.2.2-r0 ruby-dev=2.2.2-r0 ruby-io-console=2.2.2-r0 && \
   rm /var/cache/apk/*
 
-RUN apk add --update ruby-dev && \
-  rm /var/cache/apk/*
+RUN gem install bundler
 
-RUN apk add --update build-base && \
-  rm /var/cache/apk/*
-
-RUN apk add --update linux-headers && \
-  rm /var/cache/apk/*
 RUN echo -e 'gem: --no-rdoc --no-ri' > /etc/gemrc
 
 WORKDIR /usr/src/app
