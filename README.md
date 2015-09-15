@@ -16,7 +16,7 @@ Dockerfile.
 ```
    docker run -v \
     /var/run/docker.sock:/var/run/docker.sock \
-    -p 59292:8080 kunday/gondola:latest
+    -p 59292:8080 kunday/gondola:3
 ```
   You should now be able to reach the ui through the `hostip:59292` address. By
 default, if your machine is accessible to the world, this will be accessible to
