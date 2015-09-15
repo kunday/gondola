@@ -3,7 +3,7 @@ app:
   volumes:
     - .:/usr/local/app
   ports:
-    - 59292:8080
+    - 49292:8080
   privileged: true
   volumes:
     - .:/usr/src/app

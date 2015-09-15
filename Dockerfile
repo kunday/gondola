@@ -22,4 +22,7 @@ ADD . /usr/src/app
 
 EXPOSE 9292
 
+RUN adduser -H -D -s /bin/sh app
+USER app
+
 CMD bundle exec unicorn
