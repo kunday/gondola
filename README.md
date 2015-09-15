@@ -1,19 +1,23 @@
-## Gondola
+# Gondola
 
-Gondola is a docker ui for docker hosts. It lets you view your local containers,
-images and system information and let you perform usual operations on them. It
-also lets you search the public docker registry for updates to the images you
-have downloaded already in your system.
+  Gondola is a docker ui for docker hosts. It lets you view your local containers,
+images and system information. It allows you to drill down deep into docker image
+history, how much space you are using and the steps used to construct the
+Dockerfile.
 
-## Using
+## Installation
 
-To run gondola locally, you can run it using:
+  You can run this in your docker host by using the command:
 
-    docker run -p 4040:9292 kunday/gondola:latest
-
-You should now be able to view the application in your browser in the url
-
-    http://docker_host:4040/app/#
+```
+   docker run -v \
+    /var/run/docker.sock:/var/run/docker.sock \
+    -p 59292:8080 kunday/gondola:latest
+```
+  You should now be able to reach the ui through the `hostip:59292` address. By
+default, if your machine is accessible to the world, this will be accessible to
+the world too, if you have any sensitive information in your docker history it's
+recommended to block access in usual way.
 
 ## Setting up for development
 
