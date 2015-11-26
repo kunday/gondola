@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Gondola by kunday</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Gondola</h1>
+        <p>Navigate docker world easily.</p>
+
+        <p class="view"><a href="https://github.com/kunday/gondola">View the Project on GitHub <small>kunday/gondola</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/kunday/gondola/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/kunday/gondola/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/kunday/gondola">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="gondola" class="anchor" href="#gondola" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gondola</h1>
+
+<p>Gondola is a docker ui for docker hosts. It lets you view your local containers,
+images and system information. It allows you to drill down deep into docker image
+history, how much space you are using and the steps used to construct the
+Dockerfile.</p>
+
+<p><img src="http://cdn.makeagif.com/media/9-15-2015/ijCdBT.gif" alt="Gif"></p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>You can run this in your docker host by using the command:</p>
+
+<pre><code>   docker run -v \
+    /var/run/docker.sock:/var/run/docker.sock \
+    -p 59292:8080 kunday/gondola:3
+</code></pre>
+
+<p>You should now be able to reach the ui through the <code>hostip:59292</code> address. By
+default, if your machine is accessible to the world, this will be accessible to
+the world too, if you have any sensitive information in your docker history it's
+recommended to block access in usual way.</p>
+
+<h2>
+<a id="setting-up-for-development" class="anchor" href="#setting-up-for-development" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setting up for development</h2>
+
+<p>Checkout the project from github using:</p>
+
+<pre><code>git checkout https://github.com/kunday/gondola.git
+</code></pre>
+
+<p>Compile a version of the application locally by running</p>
+
+<pre><code>make
+</code></pre>
+
+<p>Once that's done, start a local version using:</p>
+
+<pre><code>docker-compose up
+</code></pre>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
+
+<h1>
+<a id="todo" class="anchor" href="#todo" aria-hidden="true"><span class="octicon octicon-link"></span></a>TODO</h1>
+
+<ol>
+<li>Enable meta screen showing the connection options</li>
+</ol>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/kunday">kunday</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
