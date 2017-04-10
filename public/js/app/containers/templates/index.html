@@ -1,36 +1,42 @@
-<ul class="nav nav-tabs" role="tablist">
-  <li class="module-nav-tabs">
-    <a href="#containers/running" class="active">Running</a>
-  </li>
-  <li class="module-nav-tabs">
-    <a href="#containers/all">All</a>
-  </li>
-</ul>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Containers</h3>
+  </div>
+  <div class="panel-body">
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="module-nav-tabs">
+        <a href="#containers/running" class="active">Running</a>
+      </li>
+      <li class="module-nav-tabs">
+        <a href="#containers/all">All</a>
+      </li>
+    </ul>
 
-<h2>Containers</h2>
-<table class="table table-striped table-bordered">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Name</th>
-      <th>Command</th>
-      <th>Image</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%_.each(model.models, function (container) {%>
-      <tr>
-        <td>
-          <a href="#container/show/<%= container.get("Id") %>">
-            <%= container.get("Id").substr(1,13) %>
-          </a>
-        </td>
-        <td><%= container.get("Names") %></td>
-        <td><code><%= container.get("Command") %></code></td>
-        <td><%= container.get("Image") %></td>
-        <td><%= container.get("Status") %></td>
-      </tr>
-    <%});%>
-  </tbody>
-</table>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Command</th>
+          <th>Image</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%_.each(model.models, function (container) {%>
+        <tr>
+          <td>
+            <a href="#container/show/<%= container.get("Id") %>">
+              <%= container.get("Id").substr(1,13) %>
+            </a>
+          </td>
+          <td><%= container.get("Names") %></td>
+          <td><code><%= container.get("Command") %></code></td>
+          <td><%= container.get("Image") %></td>
+          <td><%= container.get("Status") %></td>
+        </tr>
+        <%});%>
+      </tbody>
+    </table>
+  </div>
+</div>
