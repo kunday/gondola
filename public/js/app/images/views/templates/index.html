@@ -4,7 +4,6 @@
       <th>Id</th>
       <th>RepoTags</th>
       <th>Virtual Size</th>
-      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -17,7 +16,6 @@
         </td>
         <td><%= image.get("RepoTags") %></td>
         <td><%= helper.formatSizeUnits(image.get("VirtualSize")) %></td>
-        <td><a class="glyphicon glyphicon-minus" href="#images/delete"></a></td>
       </tr>
     <%});%>
   </tbody>

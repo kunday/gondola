@@ -20,8 +20,7 @@ define(['backbone',
     routes: {
       "images": "list",
       "images/list": "list",
-      "images/history/:id": "history",
-      "images/delete/:id": "delete"
+      "images/history/:id": "history"
     },
     list: function () {
       var module = this.moduleInitialize('list');
@@ -38,9 +37,6 @@ define(['backbone',
       historyCollection.fetch({reset: true});
       image.fetch();
       module.content(view.render().el);
-    },
-    delete: function (imageId) {
-      $("#panel").html("delete image");
     }
   });
 });
