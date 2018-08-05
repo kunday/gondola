@@ -4,7 +4,7 @@ name=gondola
 install:
 	docker build -t ${image_namespace}/${name} .
 tag:
-	docker tag -f ${image_namespace}/${name}:latest ${image_namespace}/${name}:$(shell cat version.txt)
+	docker tag ${image_namespace}/${name}:latest ${image_namespace}/${name}:$(shell cat version.txt)
 reset:
 	git clean -fdx
 	git reset HEAD --hard

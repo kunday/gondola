@@ -1,10 +1,4 @@
-FROM alpine:3.2
-
-RUN apk add --update linux-headers build-base && \
-    rm /var/cache/apk/*
-
-RUN apk add --update ruby=2.2.2-r0 ruby-dev=2.2.2-r0 ruby-io-console=2.2.2-r0 && \
-  rm /var/cache/apk/*
+FROM ruby:2.5.1
 
 RUN gem install bundler
 
