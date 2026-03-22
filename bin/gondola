@@ -1,0 +1,77 @@
+#!/bin/bash
+set -e
+
+IMAGE="kunday/gondola:latest"
+CONTAINER_NAME="gondola"
+PORT="${GONDOLA_PORT:-59292}"
+
+usage() {
+  echo "Usage: gondola [command]"
+  echo ""
+  echo "Commands:"
+  echo "  start       Start Gondola (default)"
+  echo "  stop        Stop Gondola"
+  echo "  restart     Restart Gondola"
+  echo "  status      Show Gondola status"
+  echo "  logs        Show Gondola logs"
+  echo "  version     Show version"
+  echo ""
+  echo "Environment:"
+  echo "  GONDOLA_PORT  Port to listen on (default: 59292)"
+}
+
+start() {
+  if docker ps --format '{{.Names}}' | grep -q "^${CONTAINER_NAME}$"; then
+    echo "Gondola is already running at http://localhost:${PORT}"
+    return 0
+  fi
+
+  # Remove stopped container if it exists
+  docker rm -f "$CONTAINER_NAME" 2>/dev/null || true
+
+  docker run -d \
+    --name "$CONTAINER_NAME" \
+    --privileged \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -p "${PORT}:8080" \
+    "$IMAGE" > /dev/null
+
+  echo "Gondola started at http://localhost:${PORT}"
+}
+
+stop() {
+  docker rm -f "$CONTAINER_NAME" 2>/dev/null && echo "Gondola stopped" || echo "Gondola is not running"
+}
+
+status() {
+  if docker ps --format '{{.Names}}' | grep -q "^${CONTAINER_NAME}$"; then
+    echo "Gondola is running at http://localhost:${PORT}"
+    docker ps --filter "name=${CONTAINER_NAME}" --format "  Container: {{.ID}}\n  Image: {{.Image}}\n  Status: {{.Status}}"
+  else
+    echo "Gondola is not running"
+    return 1
+  fi
+}
+
+logs() {
+  docker logs -f "$CONTAINER_NAME"
+}
+
+version() {
+  echo "Gondola Docker UI"
+  echo "Image: ${IMAGE}"
+  if [ -f "$(dirname "$0")/../version.txt" ]; then
+    echo "Version: $(cat "$(dirname "$0")/../version.txt")"
+  fi
+}
+
+case "${1:-start}" in
+  start)   start ;;
+  stop)    stop ;;
+  restart) stop; start ;;
+  status)  status ;;
+  logs)    logs ;;
+  version) version ;;
+  -h|--help|help) usage ;;
+  *) echo "Unknown command: $1"; usage; exit 1 ;;
+esac
