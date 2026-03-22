@@ -13,3 +13,8 @@ pull:
 push:
 	docker push ${image_namespace}/${name}:$(shell cat version.txt)
 	docker push ${image_namespace}/${name}:latest
+install-cli:
+	install -m 755 bin/gondola /usr/local/bin/gondola
+	@echo "Installed gondola to /usr/local/bin/gondola"
+uninstall-cli:
+	rm -f /usr/local/bin/gondola
