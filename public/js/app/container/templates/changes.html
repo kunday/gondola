@@ -10,7 +10,7 @@
     <% _.each(model.attributes, function(change) { %>
       <tr>
         <td><%= change["Path"] %></td>
-        <td><%= change["Kind"] %></td>
+        <td><%= {0: "Modified", 1: "Added", 2: "Deleted"}[change["Kind"]] || change["Kind"] %></td>
       </tr>
     <% }); %>
   </tbody>

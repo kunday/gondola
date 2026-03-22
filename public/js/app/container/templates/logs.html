@@ -1,1 +1,6 @@
-Logs
+<h3>Logs</h3>
+<% if(model.get('logs')) { %>
+<pre style="max-height: 600px; overflow-y: auto;"><%= model.get('logs') %></pre>
+<% } else { %>
+<p>Loading logs...</p>
+<% } %>

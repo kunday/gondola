@@ -2,36 +2,53 @@
 
 Last updated at: <%= model.get('read') %>
 
-<h4> Network </h4>
+<% if(model.get("networks")) { %>
+<% _.each(model.get("networks"), function(stats, iface) { %>
+<h4> Network: <%= iface %> </h4>
 
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th> key </th>
-      <th> value </th>
+      <th> Metric </th>
+      <th> Value </th>
   </thead>
   <tbody>
-    <% _.each(model.get("network"), function(key, value) { %>
+    <% _.each(stats, function(value, key) { %>
       <tr>
-        <td><%= value %></td>
         <td><%= key %></td>
+        <td><%= DiskHelper.formatSizeUnits(value) %></td>
       </tr>
     <% }); %>
   </tbody>
 </table>
-<h4> Memory Stats </h4>
+<% }); %>
+<% } %>
+
+<% if(model.get("memory_stats")) { %>
+<h4> Memory </h4>
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th> key </th>
-      <th> value </th>
+      <th> Metric </th>
+      <th> Value </th>
   </thead>
   <tbody>
-    <% _.each(model.get("memory_stats"), function(key, value) { %>
+    <tr>
+      <td>Usage</td>
+      <td><%= DiskHelper.formatSizeUnits(model.get("memory_stats").usage) %></td>
+    </tr>
+    <tr>
+      <td>Limit</td>
+      <td><%= DiskHelper.formatSizeUnits(model.get("memory_stats").limit) %></td>
+    </tr>
+    <% if(model.get("memory_stats").stats) { %>
+    <% _.each(model.get("memory_stats").stats, function(value, key) { %>
       <tr>
-        <td><%= value %></td>
-        <td><%= DiskHelper.formatSizeUnits(key) %></td>
+        <td><%= key %></td>
+        <td><%= DiskHelper.formatSizeUnits(value) %></td>
       </tr>
     <% }); %>
+    <% } %>
   </tbody>
 </table>
+<% } %>

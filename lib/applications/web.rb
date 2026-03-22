@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Web < Sinatra::Application
   get '/*' do
     send_file File.join(settings.public_folder, 'index.html')

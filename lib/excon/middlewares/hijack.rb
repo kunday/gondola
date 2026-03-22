@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Excon
   VALID_REQUEST_KEYS << :hijack_block
 
@@ -8,19 +10,19 @@ module Excon
     class Hijack < Base
       def build_response(status, socket)
         response = {
-          :body          => '',
-          :headers       => Excon::Headers.new,
-          :status        => status,
-          :remote_ip     => socket.respond_to?(:remote_ip) &&
-                            socket.remote_ip,
+          body: '',
+          headers: Excon::Headers.new,
+          status: status,
+          remote_ip: socket.respond_to?(:remote_ip) &&
+                     socket.remote_ip
         }
         if socket.data[:scheme] =~ /^(https?|tcp)$/
           response.merge({
-            :local_port    => socket.respond_to?(:local_port) &&
-                              socket.local_port,
-            :local_address => socket.respond_to?(:local_address) &&
+                           local_port: socket.respond_to?(:local_port) &&
+                                             socket.local_port,
+                           local_address: socket.respond_to?(:local_address) &&
                               socket.local_address
-          })
+                         })
         end
         response
       end
@@ -33,7 +35,7 @@ module Excon
           socket = datum[:connection].send(:socket)
 
           # c.f. Excon::Response.parse
-          until match = /^HTTP\/\d+\.\d+\s(\d{3})\s/.match(socket.readline); end
+          until (match = %r{^HTTP/\d+\.\d+\s(\d{3})\s}.match(socket.readline)); end
           status = match[1].to_i
 
           datum[:response] = build_response(status, socket)

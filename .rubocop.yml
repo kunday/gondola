@@ -1,2 +1,15 @@
-Documentation:
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+
+Style/Documentation:
   Enabled: false
+
+Metrics/MethodLength:
+  Exclude:
+    - lib/docker/connection.rb
+    - lib/excon/middlewares/hijack.rb
+
+Lint/EmptyFile:
+  Exclude:
+    - spec/factories.rb

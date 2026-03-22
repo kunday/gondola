@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Environment
   def self.docker_url
     ENV.fetch('DOCKER_HOST', 'unix:///var/run/docker.sock')
