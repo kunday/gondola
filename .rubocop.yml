@@ -10,6 +10,10 @@ Metrics/MethodLength:
     - lib/docker/connection.rb
     - lib/excon/middlewares/hijack.rb
 
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*_spec.rb
+
 Lint/EmptyFile:
   Exclude:
     - spec/factories.rb
