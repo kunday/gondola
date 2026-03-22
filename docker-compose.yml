@@ -1,5 +1,6 @@
 services:
   app:
+    build: .
     image: kunday/gondola:latest
     ports:
       - 59292:8080
