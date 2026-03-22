@@ -3,8 +3,49 @@ body {
   color: #243447;
 }
 
-.navbar {
+.app-shell-navbar {
+  background: rgba(255, 255, 255, 0.94);
   box-shadow: 0 1px 3px rgba(36, 52, 71, 0.12);
+  backdrop-filter: blur(10px);
+}
+
+.app-shell-navbar .navbar-brand {
+  letter-spacing: 0.02em;
+}
+
+.app-shell-navbar .navbar-nav {
+  gap: 0.25rem;
+}
+
+.app-shell-navbar .navbar-toggler {
+  border-color: #d7e1ea;
+}
+
+.app-shell-navbar .navbar-toggler:focus {
+  box-shadow: 0 0 0 0.2rem rgba(44, 106, 166, 0.18);
+}
+
+.app-shell-link {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: #4b627c;
+  font-weight: 600;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.app-shell-link:hover,
+.app-shell-link:focus {
+  background: #eef4fa;
+  border-color: #d7e1ea;
+  color: #1f4f82;
+}
+
+.app-shell-link.active,
+.app-shell-link.active:hover,
+.app-shell-link.active:focus {
+  background: #2c6aa6;
+  border-color: #2c6aa6;
+  color: #ffffff;
 }
 
 #panel {
@@ -47,7 +88,7 @@ body {
   border-bottom: 1px solid #d7e1ea;
 }
 
-.app-nav > li > a {
+.app-nav .nav-link {
   margin-right: 6px;
   border: 1px solid transparent;
   border-radius: 6px 6px 0 0;
@@ -56,24 +97,24 @@ body {
   text-transform: capitalize;
 }
 
-.app-nav > li > a:hover,
-.app-nav > li > a:focus {
+.app-nav .nav-link:hover,
+.app-nav .nav-link:focus {
   background: #eef4fa;
   border-color: #d7e1ea;
   color: #1f4f82;
 }
 
-.app-nav > li.active > a,
-.app-nav > li.active > a:hover,
-.app-nav > li.active > a:focus {
+.app-nav .nav-link.active,
+.app-nav .nav-link.active:hover,
+.app-nav .nav-link.active:focus {
   background: #2c6aa6;
   border-color: #2c6aa6;
   color: #ffffff;
 }
 
-.app-nav > li.disabled > a,
-.app-nav > li.disabled > a:hover,
-.app-nav > li.disabled > a:focus {
+.app-nav .nav-link.disabled,
+.app-nav .nav-link.disabled:hover,
+.app-nav .nav-link.disabled:focus {
   color: #9aabba;
   background: #f7f9fb;
   border-color: transparent;

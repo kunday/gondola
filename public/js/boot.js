@@ -7,17 +7,13 @@ requirejs.config({
     'backbone': {
       deps: ['underscore','jquery'],
       exports: 'Backbone'
-    },
-    'bootstrap': {
-      deps: ['jquery']
     }
   },
   paths: {
     jquery: 'vendor/jquery-2.1.1.min',
     underscore: 'vendor/underscore-min',
     backbone: 'vendor/backbone-min',
-    text: 'vendor/text',
-    bootstrap: 'vendor/bootstrap.min'
+    text: 'vendor/text'
   }
 });
 require(['application'], function(Application) {

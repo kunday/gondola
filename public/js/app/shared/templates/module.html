@@ -9,8 +9,8 @@
     <% if (model.tabs.length) { %>
       <ul class="nav nav-tabs app-nav" role="tablist">
         <% _.each(model.tabs, function(tab) { %>
-          <li class="<%= tab.active ? 'active ' : '' %><%= tab.disabled ? 'disabled' : '' %>" id="module-nav-<%= tab.id %>">
-            <a href="#<%= tab.route %>"><%= tab.label %></a>
+          <li class="nav-item" id="module-nav-<%= tab.id %>">
+            <a class="nav-link <%= tab.active ? 'active' : '' %><%= tab.disabled ? ' disabled' : '' %>" href="#<%= tab.route %>" <%= tab.active ? 'aria-current="page"' : '' %> <%= tab.disabled ? 'tabindex="-1" aria-disabled="true"' : '' %>><%= tab.label %></a>
           </li>
         <% }); %>
       </ul>

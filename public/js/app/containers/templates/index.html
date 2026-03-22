@@ -5,11 +5,11 @@
   </div>
   <div class="app-panel__body">
     <ul class="nav nav-tabs app-nav" role="tablist">
-      <li class="<%= model.running_status === 0 ? 'active' : '' %>">
-        <a href="#containers/running">running</a>
+      <li class="nav-item">
+        <a class="nav-link <%= model.running_status === 0 ? 'active' : '' %>" href="#containers/running" <%= model.running_status === 0 ? 'aria-current="page"' : '' %>>running</a>
       </li>
-      <li class="<%= model.running_status === 1 ? 'active' : '' %>">
-        <a href="#containers/all">all</a>
+      <li class="nav-item">
+        <a class="nav-link <%= model.running_status === 1 ? 'active' : '' %>" href="#containers/all" <%= model.running_status === 1 ? 'aria-current="page"' : '' %>>all</a>
       </li>
     </ul>
 

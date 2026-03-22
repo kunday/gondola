@@ -6,8 +6,8 @@
   <div class="app-panel__body">
     <ul class="nav nav-tabs app-nav" role="tablist">
       <% _.each(sections, function(section) { %>
-        <li class="<%= section.id === activeSection ? 'active' : '' %>">
-          <a href="#<%= section.route %>"><%= section.label %></a>
+        <li class="nav-item">
+          <a class="nav-link <%= section.id === activeSection ? 'active' : '' %>" href="#<%= section.route %>" <%= section.id === activeSection ? 'aria-current="page"' : '' %>><%= section.label %></a>
         </li>
       <% }); %>
     </ul>
