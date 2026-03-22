@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'uri'
 require 'excon'
 
@@ -18,8 +20,8 @@ module Docker
     def request(*args, &block)
       request = compile_request_params(*args, &block)
       resource.request(request).body
-    rescue => ex
-      puts "failed with #{ex}"
+    rescue StandardError => e
+      puts "failed with #{e}"
     end
 
     private
@@ -35,12 +37,11 @@ module Docker
         path: "/#{path}",
         query: query,
         headers: { 'Content-Type' => content_type,
-                   'User-Agent'   => user_agent
-      }.merge(headers),
+                   'User-Agent' => user_agent }.merge(headers),
         expects: (200..204).to_a << 304,
         idempotent: http_method == :get,
         request_block: block
-      }.merge(opts).reject { |_, v| v.nil? }
+      }.merge(opts).compact
     end
 
     def set_connection_opts

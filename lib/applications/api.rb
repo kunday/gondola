@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api < Sinatra::Application
   get '/request/*' do
     content_type :json
