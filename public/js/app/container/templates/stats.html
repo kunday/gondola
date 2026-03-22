@@ -1,54 +1,77 @@
-<h3> Stats </h3>
+<div class="app-panel">
+  <div class="app-panel__header">
+    <h3 class="app-panel__title">Container <%= String(containerId).substr(0, 13) %></h3>
+    <p class="app-panel__subtitle">Resource statistics and network usage.</p>
+  </div>
+  <div class="app-panel__body">
+    <ul class="nav nav-tabs app-nav" role="tablist">
+      <% _.each(sections, function(section) { %>
+        <li class="<%= section.id === activeSection ? 'active' : '' %>">
+          <a href="#<%= section.route %>"><%= section.label %></a>
+        </li>
+      <% }); %>
+    </ul>
 
-Last updated at: <%= model.get('read') %>
+    <p class="app-muted app-summary">Last updated at: <%= model.get('read') || 'waiting for stats' %></p>
 
-<% if(model.get("networks")) { %>
-<% _.each(model.get("networks"), function(stats, iface) { %>
-<h4> Network: <%= iface %> </h4>
-
-<table class="table table-striped table-bordered">
-  <thead>
-    <tr>
-      <th> Metric </th>
-      <th> Value </th>
-  </thead>
-  <tbody>
-    <% _.each(stats, function(value, key) { %>
-      <tr>
-        <td><%= key %></td>
-        <td><%= DiskHelper.formatSizeUnits(value) %></td>
-      </tr>
-    <% }); %>
-  </tbody>
-</table>
-<% }); %>
-<% } %>
-
-<% if(model.get("memory_stats")) { %>
-<h4> Memory </h4>
-<table class="table table-striped table-bordered">
-  <thead>
-    <tr>
-      <th> Metric </th>
-      <th> Value </th>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Usage</td>
-      <td><%= DiskHelper.formatSizeUnits(model.get("memory_stats").usage) %></td>
-    </tr>
-    <tr>
-      <td>Limit</td>
-      <td><%= DiskHelper.formatSizeUnits(model.get("memory_stats").limit) %></td>
-    </tr>
-    <% if(model.get("memory_stats").stats) { %>
-    <% _.each(model.get("memory_stats").stats, function(value, key) { %>
-      <tr>
-        <td><%= key %></td>
-        <td><%= DiskHelper.formatSizeUnits(value) %></td>
-      </tr>
-    <% }); %>
+    <% if(model.get("networks")) { %>
+      <% _.each(model.get("networks"), function(stats, iface) { %>
+      <div class="app-stack">
+        <h4 class="app-section-title">Network: <%= iface %></h4>
+        <table class="table table-striped table-bordered app-table">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% _.each(stats, function(value, key) { %>
+              <tr>
+                <td><%= key %></td>
+                <td><%= DiskHelper.formatSizeUnits(value) %></td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+      <% }); %>
     <% } %>
-  </tbody>
-</table>
-<% } %>
+
+    <% if(model.get("memory_stats")) { %>
+    <div class="app-stack">
+      <h4 class="app-section-title">Memory</h4>
+      <table class="table table-striped table-bordered app-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Usage</td>
+            <td><%= DiskHelper.formatSizeUnits(model.get("memory_stats").usage) %></td>
+          </tr>
+          <tr>
+            <td>Limit</td>
+            <td><%= DiskHelper.formatSizeUnits(model.get("memory_stats").limit) %></td>
+          </tr>
+          <% if(model.get("memory_stats").stats) { %>
+            <% _.each(model.get("memory_stats").stats, function(value, key) { %>
+              <tr>
+                <td><%= key %></td>
+                <td><%= DiskHelper.formatSizeUnits(value) %></td>
+              </tr>
+            <% }); %>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+    <% } %>
+
+    <% if(!model.get("networks") && !model.get("memory_stats")) { %>
+    <p class="app-muted">No stats were returned for this container.</p>
+    <% } %>
+  </div>
+</div>

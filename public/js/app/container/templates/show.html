@@ -1,119 +1,139 @@
-<div class="panel panel-success">
-<div class="panel-heading">
-  <h3 class="panel-title"><%= model.get("Name") %></h3>
-</div>
-<div class="panel-body">
-  <ul class="nav nav-tabs" role="tablist">
-    <% _.each(model.tabs, function(tab) { %>
-    <li class="module-nav-tabs">
-      <a href="javascript:void(0)" data-target="<%= tab %>"><%= tab %></a>
-    </li>
-    <% }); %>
-    <li class="module-nav-tabs">
-      <a href="#container/changes/<%= model.id %>">changes</a>
-    </li>
-    <li class="module-nav-tabs">
-      <a href="#container/logs/<%= model.id %>">logs</a>
-    </li>
-    <li class="module-nav-tabs">
-      <a href="#container/stats/<%= model.id %>">stats</a>
-    </li>
-  </ul>
-  <div class="module-nav-content" id="module-nav-content-info">
-    <table class="table table-striped table-bordered">
-      <tbody>
-        <tr>
-          <td>Name</td>
-          <td><%= model.get("Name") %></td>
-        </tr>
-        <tr>
-          <td>From Image</td>
-          <td><a href="#images/history/<%= model.get("Image") %>"><%= model.get("Image") %></a></td>
-        </tr>
-        <tr>
-          <td>Args</td>
-          <td><%= model.get("Args") %></td>
-        </tr>
-        <tr>
-          <td>Created</td>
-          <td><%= model.get("Created") %></td>
-        </tr>
-        <tr>
-          <td>Driver</td>
-          <td><%= model.get("Driver") %></td>
-        </tr>
-        <tr>
-          <td>Exec Driver</td>
-          <td><%= model.get("ExecDriver") %></td>
-        </tr>
-        <tr>
-          <td>Host Name Path</td>
-          <td><%= model.get("HostnamePath") %></td>
-        </tr>
-        <tr>
-          <td>Hosts Path</td>
-          <td><%= model.get("HostnamePath") %></td>
-        </tr>
-      </tbody>
-    </table>
+<div class="app-panel">
+  <div class="app-panel__header">
+    <h3 class="app-panel__title"><%= model.get("Name") || ("Container " + String(model.id).substr(0, 13)) %></h3>
+    <p class="app-panel__subtitle">Container ID: <%= model.id %></p>
   </div>
-  <div class="module-nav-content" id="module-nav-content-state">
-    <% if(model.get("State") !== undefined) { %>
-    <table class="table table-striped table-bordered">
-      <tbody>
-        <tr>
-          <td>Pid</td>
-          <td><%=model.get("State").Pid %></td>
-        </tr>
-        <tr>
-          <td>StartedAt</td>
-          <td><%=model.get("State").StartedAt %></td>
-        </tr>
-        <tr>
-          <td>Running</td>
-          <td><%=model.get("State").Running %></td>
-        </tr>
-        <tr>
-          <td>Restarting</td>
-          <td><%=model.get("State").Restarting %></td>
-        </tr>
-        <tr>
-          <td>Exit Code</td>
-          <td><%=model.get("State").ExitCode %></td>
-        </tr>
-        <tr>
-          <td>FinishedAt</td>
-          <td><%=model.get("State").FinishedAt %></td>
-        </tr>
-      </tbody>
-    </table>
-    <% } %>
+  <div class="app-panel__body">
+    <ul class="nav nav-tabs app-nav" role="tablist">
+      <% _.each(sections, function(section) { %>
+        <li class="<%= section.id === activeSection ? 'active' : '' %>">
+          <a href="#<%= section.route %>"><%= section.label %></a>
+        </li>
+      <% }); %>
+    </ul>
+
+    <div class="module-nav-content" id="module-nav-content-info">
+      <h4 class="app-section-title">Overview</h4>
+      <table class="table table-striped table-bordered app-table app-table--kv">
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td><%= model.get("Name") %></td>
+          </tr>
+          <tr>
+            <td>From Image</td>
+            <td><a href="#images/history/<%= model.get("Image") %>"><%= model.get("Image") %></a></td>
+          </tr>
+          <tr>
+            <td>Args</td>
+            <td><%= model.get("Args") %></td>
+          </tr>
+          <tr>
+            <td>Created</td>
+            <td><%= model.get("Created") %></td>
+          </tr>
+          <tr>
+            <td>Driver</td>
+            <td><%= model.get("Driver") %></td>
+          </tr>
+          <tr>
+            <td>Exec Driver</td>
+            <td><%= model.get("ExecDriver") %></td>
+          </tr>
+          <tr>
+            <td>Hostname Path</td>
+            <td><%= model.get("HostnamePath") %></td>
+          </tr>
+          <tr>
+            <td>Hosts Path</td>
+            <td><%= model.get("HostsPath") %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="module-nav-content" id="module-nav-content-state">
+      <h4 class="app-section-title">State</h4>
+      <% if(model.get("State") !== undefined) { %>
+      <table class="table table-striped table-bordered app-table app-table--kv">
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pid</td>
+            <td><%=model.get("State").Pid %></td>
+          </tr>
+          <tr>
+            <td>Started At</td>
+            <td><%=model.get("State").StartedAt %></td>
+          </tr>
+          <tr>
+            <td>Running</td>
+            <td><%=model.get("State").Running %></td>
+          </tr>
+          <tr>
+            <td>Restarting</td>
+            <td><%=model.get("State").Restarting %></td>
+          </tr>
+          <tr>
+            <td>Exit Code</td>
+            <td><%=model.get("State").ExitCode %></td>
+          </tr>
+          <tr>
+            <td>Finished At</td>
+            <td><%=model.get("State").FinishedAt %></td>
+          </tr>
+        </tbody>
+      </table>
+      <% } else { %>
+      <p class="app-muted">State details are not available for this container.</p>
+      <% } %>
+    </div>
+
+    <div class="module-nav-content" id="module-nav-content-networking">
+      <h4 class="app-section-title">Networking</h4>
+      <% if(model.get("NetworkSettings") !== undefined && model.get("NetworkSettings").Networks) { %>
+      <table class="table table-striped table-bordered app-table app-table--kv">
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% _.each(model.get("NetworkSettings").Networks, function(net, name) { %>
+          <tr>
+            <td>Network</td>
+            <td><strong><%= name %></strong></td>
+          </tr>
+          <tr>
+            <td>Gateway</td>
+            <td><%= net.Gateway %></td>
+          </tr>
+          <tr>
+            <td>IP Address</td>
+            <td><%= net.IPAddress %></td>
+          </tr>
+          <tr>
+            <td>Mac Address</td>
+            <td><%= net.MacAddress %></td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+      <% } else { %>
+      <p class="app-muted">Networking details are not available for this container.</p>
+      <% } %>
+    </div>
   </div>
-  <div class="module-nav-content" id="module-nav-content-networking">
-    <% if(model.get("NetworkSettings") !== undefined && model.get("NetworkSettings").Networks) { %>
-    <table class="table table-striped table-bordered">
-      <tbody>
-        <% _.each(model.get("NetworkSettings").Networks, function(net, name) { %>
-        <tr>
-          <td>Network</td>
-          <td><strong><%= name %></strong></td>
-        </tr>
-        <tr>
-          <td>Gateway</td>
-          <td><%= net.Gateway %></td>
-        </tr>
-        <tr>
-          <td>IP Address</td>
-          <td><%= net.IPAddress %></td>
-        </tr>
-        <tr>
-          <td>Mac Address</td>
-          <td><%= net.MacAddress %></td>
-        </tr>
-        <% }); %>
-      </tbody>
-    </table>
-    <% } %>
-  </div>
-</div>
 </div>

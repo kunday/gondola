@@ -1,17 +1,39 @@
-<h3> Container changes </h3>
-<table class="table table-striped table-bordered">
-  <thead>
-    <tr>
-      <th>Path</th>
-      <th>Kind</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% _.each(model.attributes, function(change) { %>
-      <tr>
-        <td><%= change["Path"] %></td>
-        <td><%= {0: "Modified", 1: "Added", 2: "Deleted"}[change["Kind"]] || change["Kind"] %></td>
-      </tr>
-    <% }); %>
-  </tbody>
-</table>
+<div class="app-panel">
+  <div class="app-panel__header">
+    <h3 class="app-panel__title">Container <%= String(containerId).substr(0, 13) %></h3>
+    <p class="app-panel__subtitle">Filesystem changes for <%= containerId %></p>
+  </div>
+  <div class="app-panel__body">
+    <ul class="nav nav-tabs app-nav" role="tablist">
+      <% _.each(sections, function(section) { %>
+        <li class="<%= section.id === activeSection ? 'active' : '' %>">
+          <a href="#<%= section.route %>"><%= section.label %></a>
+        </li>
+      <% }); %>
+    </ul>
+
+    <h4 class="app-section-title">Filesystem Changes</h4>
+    <table class="table table-striped table-bordered app-table">
+      <thead>
+        <tr>
+          <th>Path</th>
+          <th>Kind</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (_.size(model.attributes)) { %>
+          <% _.each(model.attributes, function(change) { %>
+            <tr>
+              <td><%= change["Path"] %></td>
+              <td><%= {0: "Modified", 1: "Added", 2: "Deleted"}[change["Kind"]] || change["Kind"] %></td>
+            </tr>
+          <% }); %>
+        <% } else { %>
+          <tr>
+            <td colspan="2" class="app-muted">No changes were reported for this container.</td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>

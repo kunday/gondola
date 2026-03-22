@@ -10,8 +10,11 @@ define(['backbone',
           var appModule = new Module({
             title: "System Information",
             name: "system",
-            navigationTabs: ["version", "info"],
-            router: this,
+            subtitle: "Docker daemon version and host level information.",
+            navigationTabs: [
+              {id: "version", label: "version", route: "system/version"},
+              {id: "info", label: "info", route: "system/info"}
+            ],
             default: subNav
           });
           $("#panel").html(appModule.render().el);

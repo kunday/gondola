@@ -1,7 +1,9 @@
 define(['backbone',
-  'text!app/container/templates/logs.html'],
+  'text!app/container/templates/logs.html',
+  'app/container/helpers/navigation'],
   function(Backbone,
-    template) {
+    template,
+    NavigationHelper) {
   return Backbone.View.extend({
     template: _.template(template),
     initialize: function() {
@@ -9,7 +11,12 @@ define(['backbone',
       this.model.bind('reset', this.render, this);
     },
     render: function() {
-      $(this.el).html(this.template({model: this.model}));
+      $(this.el).html(this.template({
+        model: this.model,
+        containerId: this.model.id,
+        activeSection: 'logs',
+        sections: NavigationHelper.sections(this.model.id)
+      }));
       return this;
     }
   });

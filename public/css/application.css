@@ -1,0 +1,146 @@
+body {
+  background: #f3f6f9;
+  color: #243447;
+}
+
+.navbar {
+  box-shadow: 0 1px 3px rgba(36, 52, 71, 0.12);
+}
+
+#panel {
+  padding: 24px 15px 40px;
+}
+
+.app-panel {
+  margin-top: 12px;
+  border: 1px solid #d7e1ea;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgba(36, 52, 71, 0.08);
+  overflow: hidden;
+}
+
+.app-panel__header {
+  padding: 18px 22px;
+  border-bottom: 1px solid #dfe7ef;
+  background: linear-gradient(180deg, #f9fbfd 0%, #eef4fa 100%);
+}
+
+.app-panel__title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.app-panel__subtitle {
+  margin: 6px 0 0;
+  color: #607389;
+  font-size: 13px;
+}
+
+.app-panel__body {
+  padding: 20px 22px 24px;
+}
+
+.app-nav {
+  margin-bottom: 18px;
+  border-bottom: 1px solid #d7e1ea;
+}
+
+.app-nav > li > a {
+  margin-right: 6px;
+  border: 1px solid transparent;
+  border-radius: 6px 6px 0 0;
+  color: #4b627c;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.app-nav > li > a:hover,
+.app-nav > li > a:focus {
+  background: #eef4fa;
+  border-color: #d7e1ea;
+  color: #1f4f82;
+}
+
+.app-nav > li.active > a,
+.app-nav > li.active > a:hover,
+.app-nav > li.active > a:focus {
+  background: #2c6aa6;
+  border-color: #2c6aa6;
+  color: #ffffff;
+}
+
+.app-nav > li.disabled > a,
+.app-nav > li.disabled > a:hover,
+.app-nav > li.disabled > a:focus {
+  color: #9aabba;
+  background: #f7f9fb;
+  border-color: transparent;
+  cursor: default;
+  pointer-events: none;
+}
+
+.app-section-title {
+  margin: 0 0 12px;
+  color: #36506c;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.app-stack + .app-stack {
+  margin-top: 22px;
+}
+
+.app-muted {
+  color: #607389;
+}
+
+.app-table {
+  margin-bottom: 0;
+}
+
+.app-table > thead > tr > th {
+  background: #e9f1f9;
+  border-bottom: 2px solid #d2deea;
+  color: #37516c;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.app-table > tbody > tr > td {
+  vertical-align: middle;
+}
+
+.app-table--kv > tbody > tr > td:first-child {
+  width: 32%;
+  background: #f7fafc;
+  color: #425c77;
+  font-weight: 600;
+}
+
+.app-table code {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.app-pre {
+  margin: 0;
+  padding: 16px;
+  max-height: 600px;
+  overflow: auto;
+  border: 1px solid #101826;
+  border-radius: 6px;
+  background: #101826;
+  color: #e7edf5;
+}
+
+.app-summary {
+  margin-bottom: 18px;
+}
+
+.app-summary p {
+  margin: 0 0 6px;
+}

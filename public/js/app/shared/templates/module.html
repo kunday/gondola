@@ -1,10 +1,20 @@
-<h2><%= model.title %></h2>
-<ul class="nav nav-tabs" role="tablist">
-  <% _.each(model.tabs, function(tab) { %>
-    <li class="module-nav-tabs" id="module-nav-<%= tab %>">
-      <a href="javascript:void(0)"><%= tab %></a>
-    </li>
-  <% }); %>
-</ul>
-<div id="module-nav-content">
+<div class="app-panel">
+  <div class="app-panel__header">
+    <h2 class="app-panel__title"><%= model.title %></h2>
+    <% if (model.subtitle) { %>
+      <p class="app-panel__subtitle"><%= model.subtitle %></p>
+    <% } %>
+  </div>
+  <div class="app-panel__body">
+    <% if (model.tabs.length) { %>
+      <ul class="nav nav-tabs app-nav" role="tablist">
+        <% _.each(model.tabs, function(tab) { %>
+          <li class="<%= tab.active ? 'active ' : '' %><%= tab.disabled ? 'disabled' : '' %>" id="module-nav-<%= tab.id %>">
+            <a href="#<%= tab.route %>"><%= tab.label %></a>
+          </li>
+        <% }); %>
+      </ul>
+    <% } %>
+    <div id="module-nav-content"></div>
+  </div>
 </div>

@@ -19,13 +19,14 @@ define(['backbone',
     return Backbone.Router.extend({
       routes: {
         'container/show/:id': 'show',
+        'container/show/:id/:section': 'show',
         'container/changes/:id': 'changes',
         'container/logs/:id': 'logs',
         'container/stats/:id': 'stats'
       },
-      show: function (id) {
+      show: function (id, section) {
         var container = new ContainerInfo({"id": id});
-        var view = new ContainerInfoView({model: container});
+        var view = new ContainerInfoView({model: container, section: section});
         container.fetch({reset: true});
         $("#panel").html(view.render().el);
       },

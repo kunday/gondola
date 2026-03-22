@@ -7,11 +7,20 @@ define(['backbone',
   'app/images/models/image'],
   function(Backbone, Module, ImagesCollection, ImagesView, HistoryCollection, HistoryView, Image) {
   return Backbone.Router.extend({
-    moduleInitialize: function(subNav){
+    moduleInitialize: function(subNav, imageId){
       var appModule = new Module({
         title: "Images",
         name: "images",
-        router: this,
+        subtitle: "Browse local images and inspect their layer history.",
+        navigationTabs: [
+          {id: "list", label: "list", route: "images/list"},
+          {
+            id: "history",
+            label: "history",
+            route: imageId ? "images/history/" + imageId : "images/list",
+            disabled: !imageId
+          }
+        ],
         default: subNav
       });
       $("#panel").html(appModule.render().el);
@@ -30,12 +39,21 @@ define(['backbone',
       module.content(view.render().el);
     },
     history: function (id) {
-      var module = this.moduleInitialize('history');
+      var module = this.moduleInitialize('history', id);
       var historyCollection = new HistoryCollection({"imageId": id});
       var image = new Image({"imageId": id});
       var view = new HistoryView({model: historyCollection, info: image});
-      historyCollection.fetch({reset: true});
-      image.fetch();
+      historyCollection.fetch({
+        reset: true,
+        success: function() {
+          view.render();
+        }
+      });
+      image.fetch({
+        success: function() {
+          view.render();
+        }
+      });
       module.content(view.render().el);
     }
   });

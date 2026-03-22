@@ -1,7 +1,11 @@
-<p><%= info.attributes["Parent"] %></p>
-<p><%= info.attributes["Os"] %></p>
-<p> Layers: <%= model.imageId %> <p>
-<table class="table table-striped table-bordered">
+<div class="app-summary">
+  <p><strong>Image:</strong> <code><%= model.imageId %></code></p>
+  <p><strong>Parent:</strong> <%= info.get("Parent") || "none" %></p>
+  <p><strong>OS:</strong> <%= info.get("Os") || "unknown" %></p>
+  <p><strong>Layers:</strong> <%= model.length %></p>
+</div>
+
+<table class="table table-striped table-bordered app-table">
   <thead>
     <tr>
       <th>Layer</th>
@@ -11,17 +15,27 @@
     </tr>
   </thead>
   <tbody>
-    <%_.each(model.models, function (layer) {%>
+    <% if (model.length) { %>
+      <%_.each(model.models, function (layer) {%>
+        <tr>
+          <td>
+            <% if (layer.get("Id") && layer.get("Id") !== "<missing>") { %>
+              <a href="#images/history/<%= layer.get("Id") %>">
+                <%= String(layer.get("Id")).substr(0,13) %>
+              </a>
+            <% } else { %>
+              <span class="app-muted">base layer</span>
+            <% } %>
+          </td>
+          <td><%= new Date(1000 * layer.get("Created")).toLocaleString() %></td>
+          <td><code><%= layer.get("CreatedBy")%></code></td>
+          <td><%= helper.formatSizeUnits(layer.get("Size"))%></td>
+        </tr>
+      <%});%>
+    <% } else { %>
       <tr>
-        <td>
-          <a href="#images/history/<%= layer.get("Id") %>">
-            <%= String(layer.get("Id")).substr(0,13) %>
-          </a>
-        </td>
-        <td><%= new Date(1000*layer.get("Created")).toLocaleString()%></td>
-        <td><code><%= layer.get("CreatedBy")%></code></td>
-        <td><%= helper.formatSizeUnits(layer.get("Size"))%></td>
+        <td colspan="4" class="app-muted">No image history was returned.</td>
       </tr>
-    <%});%>
+    <% } %>
   </tbody>
 </table>

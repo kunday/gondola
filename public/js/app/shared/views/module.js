@@ -9,32 +9,41 @@ define(['backbone',
   return Backbone.View.extend({
     template: _.template(template),
     tagName: 'div',
-    events: {
-      'click .module-nav-tabs': 'navigate'
-    },
     initialize: function(options) {
       this.model = {
         title:    options.title,
+        subtitle: options.subtitle,
         name:     options.name,
-        tabs:     options.navigationTabs,
+        tabs:     this.normalizeTabs(options.navigationTabs || [], options.default),
       };
-      this.default = options.default;
-      this.router  = options.router;
+    },
+    normalizeTabs: function(tabs, activeTab) {
+      return _.map(tabs, function(tab) {
+        if (_.isString(tab)) {
+          return {
+            id: tab,
+            label: tab,
+            route: tab,
+            active: tab === activeTab,
+            disabled: false
+          };
+        }
+
+        return {
+          id: tab.id,
+          label: tab.label || tab.id,
+          route: tab.route,
+          active: tab.id === activeTab,
+          disabled: !!tab.disabled
+        };
+      });
     },
     render: function() {
       $(this.el).html(this.template({model: this.model}));
-      this.setActiveHighlight();
       return this;
     },
-    setActiveHighlight: function() {
-      $(this.el).find("#module-nav-" + this.default).addClass('active');
-    },
-    navigate: function(e) {
-      var navigateTarget = $(e.currentTarget).find('a').text();
-      this.router.navigate('system/' + navigateTarget,  {trigger: true});
-    },
     content: function(content) {
-      $("#module-nav-content").html(content);
+      this.$("#module-nav-content").html(content);
     }
   });
 });
