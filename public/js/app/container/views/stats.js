@@ -1,6 +1,7 @@
 define(['backbone',
-  'text!app/container/templates/stats.html'],
-  function(Backbone, template) {
+  'text!app/container/templates/stats.html',
+  'app/shared/helpers/disk'],
+  function(Backbone, template, DiskHelper) {
     return Backbone.View.extend({
       template: _.template(template),
       initialize: function(){
@@ -8,7 +9,7 @@ define(['backbone',
         this.model.bind('reset', this.render, this);
       },
       render: function(e) {
-        $(this.el).html(this.template({model: this.model}));
+        $(this.el).html(this.template({model: this.model, DiskHelper: DiskHelper}));
         return this;
       }
     });
